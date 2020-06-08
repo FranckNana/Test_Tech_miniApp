@@ -1,0 +1,23 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav">
+        <li>
+          <a routerLink="books">Test Technique réalisé par Franck NANA</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+            <a (click)="onBack()" style="cursor: pointer;">Retour</a>
+        </li>
+      </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <h4 style="color: black; text-align: justify;"><b>id:</b> {{data._id.$oid}}, <b>product_name: </b>{{data.product_name}}, 
+        <b>supplier :</b>{{data.supplier}}, <b>quantity: </b> {{data.quantity}}, <b>unit_cost:</b> {{data.unit_cost}}</h4>
+</div>
+
+
+
+

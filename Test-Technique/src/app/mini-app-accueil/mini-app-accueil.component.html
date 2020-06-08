@@ -1,0 +1,56 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav">
+        <li class="active">
+          <a routerLink="books">Test Technique réalisé par Franck NANA</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a (click)="printList()" style="cursor: pointer;">Lister le contenu</a>
+        </li>
+        <li>
+          <a (click)="printLastFile()" style="cursor: pointer;">Dernière fiche consultée</a>
+        </li>
+      </ul>
+    </div>
+</nav>
+
+
+<div class="container" *ngIf="isList">
+
+    <div class="search-container" style="margin-left: 42%;margin-bottom: 2%;" >
+      <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <input type="text" placeholder="Search.." name="search" id="search" ngModel>
+        <button type="submit"><i class="glyphicon glyphicon-search"></i></button>
+      </form>
+      <p *ngIf="!isPresent && isactif" style="color: red; margin-left: -11%;"> l'articile recherché n'existe pas!merci de réessayer!!</p>
+    </div>
+
+    <button style="margin-left: 33%;margin-bottom: 2%;" (click)="croissant()">trie par ordre croissant de prix</button>  
+    <button (click)="deCroissant()">trie par ordre décroissant de prix</button>
+
+    <p style="color:blue ; text-align: center;" *ngIf="isLastFile">dernière fiche consultée:
+      <b>id:</b> {{lastItem._id.$oid}}, <b>product_name: </b>{{lastItem.product_name}}, 
+                <b>supplier :</b>{{lastItem.supplier}}, <b>quantity: </b> {{lastItem.quantity}}, <b>unit_cost:</b> {{lastItem.unit_cost}}
+    </p>
+
+    <p style="color:blue ; text-align: center;" *ngIf="!isLastFile && noLastFile">Aucun article consulté pour l'instatnt...</p>
+
+
+    <button  *ngFor="let data of dataset; let i = index" style="width: 100%;">
+        <div>
+            <h4 style="color: black; text-align: justify;" (click)="onViewSingleData(data)"><b>id:</b> {{data._id.$oid}}, <b>product_name: </b>{{data.product_name}}, 
+                <b>supplier :</b>{{data.supplier}}, <b>quantity: </b> {{data.quantity}}, <b>unit_cost:</b> {{data.unit_cost}}</h4>
+        </div>
+    </button>
+    
+</div>
+
+
+<div class="container" *ngIf="isPresent">
+  <h2 style="color: black; text-align: justify;"><b>id:</b> {{data._id.$oid}}, <b>product_name: </b>{{data.product_name}}, 
+      <b>supplier :</b>{{data.supplier}}, <b>quantity: </b> {{data.quantity}}, <b>unit_cost:</b> {{data.unit_cost}}</h2>
+</div>
+
+
