@@ -11,5 +11,7 @@
        * Ajouter qussi la ligne suivante dans Angular.json => style
 		./node_modules/bootstrap/dist/css/bootstrap.css"
 
-- instqller le package rxjs
+- installer le package rxjs
        * commande d'installation: npm install rxjs-compat --save
+
+- Version Node 10.16.3
